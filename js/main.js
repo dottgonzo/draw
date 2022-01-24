@@ -8,24 +8,28 @@ FloatingButton.onClick = Board.clearMemory.bind(Board);
 Pointer.onEmpty = _.debounce(Board.storeMemory.bind(Board), 1500);
 
 // Attach event listener
-var pointerDown = function pointerDown(e) {
+const pointerDown = function pointerDown(e) {
+  console.dir(e);
+  if (e.pointerType !== Pen.type) {
+    console.log('Not a pen event');
+    console.log(e.pointerType);
+    return;
+  }
   // Initialise pointer
-  var pointer = new Pointer(e.pointerId);
+  const pointer = new Pointer(e.pointerId);
   pointer.set(Board.getPointerPos(e));
-
   // Get function type
   Pen.setFuncType(e);
   if (Pen.funcType === Pen.funcTypes.menu) Board.clearMemory();
   else drawOnCanvas(e, pointer, Pen);
 }
-var pointerMove = function pointerMove(e) {
+const pointerMove = function pointerMove(e) {
   if (Pen.funcType && (Pen.funcType.indexOf(Pen.funcTypes.draw) !== -1)) {
-
-    var pointer = Pointer.get(e.pointerId);
+    const pointer = Pointer.get(e.pointerId);
     drawOnCanvas(e, pointer, Pen);
   }
 }
-var pointerCancel = function pointerLeave(e) {
+const pointerCancel = function pointerLeave(e) {
   Pointer.destruct(e.pointerId);
 }
 Board.dom.addEventListener('pointerdown', pointerDown);

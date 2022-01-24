@@ -1,13 +1,13 @@
 'use strict'
 
-var Pen = (function() {
-  var pen = {
+const Pen = (function() {
+  const pen = {
     colors: {
       fg: '#555',
       bg: '#FFF'
     },
     lineWidth: 4,
-    type: 'mouse',
+    type: 'pen',
     lineJoin: 'round',
     funcType: null,
     funcTypes: {
@@ -54,7 +54,7 @@ var Pen = (function() {
     }
   }
 
-  var getLineWidth = function getLineWidth(e) {
+  const getLineWidth = function getLineWidth(e) {
     switch (e.pointerType) {
       case 'touch': {
         if (e.width < 10 && e.height < 10) {
@@ -68,18 +68,13 @@ var Pen = (function() {
     }
   }
 
-  var checkEraseKeys = function checkEraseKeys(e) {
+  const checkEraseKeys = function checkEraseKeys(e) {
     if (e.buttons === 32) return true;
     else if (e.buttons === 1 && e.shiftKey) return true;
     return false;
   }
-  var checkMenuKey = function checkMenuKey(e) {
+  const checkMenuKey = function checkMenuKey(e) {
     return (e.buttons === 1 && e.ctrlKey);
   }
-
-  function openMenu(e) {
-    console.log('Menu', e.pageX, e.pageY);
-  }
-
   return pen;
 })();

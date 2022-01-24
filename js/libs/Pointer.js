@@ -1,6 +1,6 @@
 'use strict'
 
-var Pointer = (function() {
+const Pointer = (function() {
 
   var size = 0;
   var hashMap = {};
