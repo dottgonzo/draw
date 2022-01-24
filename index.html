@@ -41,6 +41,12 @@
       padding: 15px;
       background: white;
     }
+    #event-output {
+      width: 300px;
+      height: 200px;
+      background-color: white;
+      overflow: scroll;
+    }
   </style>
 </head>
 
@@ -50,6 +56,7 @@
     <input type="color" id="pen-color" onchange="changePenConfig()">
     Breite:
     <input type="number" id="pen-width" onchange="changePenConfig()" value="10">
+    <pre id="event-output"></pre>
   </div>
   <canvas touch-action="none" id="board" width="640" height="640" style="width:320px; height:320px;">
     Opps, you cannot play draw N guess with this browser!

@@ -9,10 +9,12 @@ Pointer.onEmpty = _.debounce(Board.storeMemory.bind(Board), 1500);
 
 // Attach event listener
 const pointerDown = function pointerDown(e) {
+  logEvent(e.pointerType);
+  logEvent(e.pointerId);
   console.dir(e);
   let erase = false;
   if (e.pointerType !== Pen.type) {
-    erase = true;
+    return;
   }
   // Initialise pointer
   const pointer = new Pointer(e.pointerId);
@@ -23,6 +25,7 @@ const pointerDown = function pointerDown(e) {
   else drawOnCanvas(e, pointer, Pen, erase);
 }
 const pointerMove = function pointerMove(e) {
+  logEvent(e.pointerType);
   if (Pen.funcType && (Pen.funcType.indexOf(Pen.funcTypes.draw) !== -1)) {
     const pointer = Pointer.get(e.pointerId);
     drawOnCanvas(e, pointer, Pen);
@@ -38,6 +41,7 @@ Board.dom.addEventListener('pointerleave', pointerCancel);
 
 // Draw method
 function drawOnCanvas(e, pointerObj, Pen, erase) {
+  logEvent(e);
   if (pointerObj) {
     const originalColor = Pen.colors.fg;
 
@@ -77,3 +81,8 @@ const changePenConfig = () => {
   Pen.set(Board.ctx, config);
 }
 
+const logEvent = (e) => {
+  document.getElementById('event-output').innerText += '\n' + JSON.stringify(e);
+}
+
+logEvent('Event Log:');
