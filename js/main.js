@@ -39,7 +39,6 @@ Board.dom.addEventListener('pointerleave', pointerCancel);
 // Draw method
 function drawOnCanvas(e, pointerObj, Pen, erase) {
   if (pointerObj) {
-
     const originalColor = Pen.colors.fg;
 
     if (erase) {
@@ -65,3 +64,16 @@ function drawOnCanvas(e, pointerObj, Pen, erase) {
     }
   }
 }
+
+const changePenConfig = () => {
+  const lineWidth = document.getElementById('pen-width').value;
+  const color = document.getElementById('pen-color').value;
+  const config = {
+    lineWidth,
+    color
+  };
+  Pen.colors.fg = color;
+  Pen.lineWidth = lineWidth;
+  Pen.set(Board.ctx, config);
+}
+

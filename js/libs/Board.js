@@ -26,22 +26,32 @@ var Board = (function() {
        // Additional Configuration
        this.ctx.imageSmoothingEnabled = true;
 
-       // Create buffer
        this.domMem = document.createElement('canvas');
        this.ctxMem = this.domMem.getContext('2d');
-       this.ctxMem.fillStyle = this.bgColor;
-       this.ctxMem.fillRect(0,0, this.domMem.width, this.domMem.height);
+
+       const background = new Image();
+       background.src = 'img/bg_quad_paper.jpeg';
+       background.onload = () => {
+         for (let w = 0; w < this.domMem.width; w += background.width) {
+           for (let h = 0; h < this.domMem.height; h += background.height) {
+             console.log('drawing background ' + w + ' ' + h);
+             this.ctx.drawImage(background, w, h);
+           }
+         }
+       }
 
        // Set up sizing
        fitToWindow.bind(this)();
        window.addEventListener('resize', fitToWindow.bind(this));
 
        // Load canvas from local storage
+       /**
        if (localStorage.dataURL) {
          var img = new window.Image();
          img.addEventListener('load', this.loadToMemory.bind(this));
          img.setAttribute('src', localStorage.dataURL);
        }
+        **/
      },
      getPointerPos: function getPointerPos(event) {
        return {

@@ -19,6 +19,7 @@
       border: 0.5px solid rgba(0,0,0,0.1);
       box-shadow: 1px 1px 1px 0.5px rgba(0,0,0,0.1);
       cursor: crosshair;
+      background-color: red;
     }
 
     #floatingButton {
@@ -30,11 +31,26 @@
     #floatingButton:active {
       transform: scale(0.9, 0.9);
     }
-
+    .pen-menu {
+      font-family: sans-serif;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2rem;
+      width: 100%;
+      padding: 15px;
+      background: white;
+    }
   </style>
 </head>
 
 <body>
+  <div class="pen-menu">
+    Farbe:
+    <input type="color" id="pen-color" onchange="changePenConfig()">
+    Breite:
+    <input type="number" id="pen-width" onchange="changePenConfig()" value="10">
+  </div>
   <canvas touch-action="none" id="board" width="640" height="640" style="width:320px; height:320px;">
     Opps, you cannot play draw N guess with this browser!
   </canvas>

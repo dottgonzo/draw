@@ -6,7 +6,7 @@ const Pen = (function() {
       fg: '#555',
       bg: '#FFF'
     },
-    lineWidth: 4,
+    lineWidth: 10,
     type: 'pen',
     lineJoin: 'round',
     funcType: null,
@@ -63,8 +63,8 @@ const Pen = (function() {
           return (e.width + e.height - 40) / 2;
         }
       }
-      case 'pen': return e.pressure * 8;
-      default: return (e.pressure) ? e.pressure * 8 : 4;
+      case 'pen': return e.pressure * pen.lineWidth;
+      default: return (e.pressure) ? e.pressure * pen.lineWidth : (pen.lineWidth/2);
     }
   }
 
