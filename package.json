@@ -1,0 +1,25 @@
+{
+  "name": "draw",
+  "version": "0.0.0",
+  "description": "Draw with pen",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dottgonzo/draw.git"
+  },
+  "keywords": [
+    "draw"
+  ],
+  "author": "amoshydra",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dottgonzo/draw/issues"
+  },
+  "homepage": "https://github.com/dottgonzo/draw#readme",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
+}
