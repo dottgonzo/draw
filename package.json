@@ -4,7 +4,12 @@
   "description": "Draw with pen",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "npx tsc",
+    "watch-ts": "npx tsc -w",
+    "release:patch": "npm version patch && git push && git push --tags",
+    "release:minor": "npm version minor && git push && git push --tags",
+    "release:major": "npm version major && git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -20,6 +25,10 @@
   },
   "homepage": "https://github.com/dottgonzo/draw#readme",
   "devDependencies": {
+    "@types/throttle-debounce": "^5.0.0",
     "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "throttle-debounce": "^5.0.0"
   }
 }
